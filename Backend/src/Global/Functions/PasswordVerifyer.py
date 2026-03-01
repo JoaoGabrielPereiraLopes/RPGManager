@@ -3,42 +3,39 @@ def emailVerifier(password:str,passwordConfirm:str):
         if not password or not password:
             return {
                 "Message":"The password is null",
-                "pass":False
+                "Success":False
             }
         
         elif password!=passwordConfirm:
             return {
                 "Message":"The password don't match",
-                "pass":False
+                "Success":False
             }
         
-        elif len(password)>6: #precisa conter 6 caracters
+        elif len(password)>6:
             return {
                 "Message":"Your password haven't 6 caracters",
-                "pass":False
+                "Success":False
             }
         
-        elif password.upper()==password: #precisa conter caracteres maiúsculos e minúsculos
+        elif password.upper()==password:
             return {
                 "Message":"Your password need to have uppercase letters and not uppercase letters",
-                "pass":False
+                "Success":False
             }
         
-        elif password.isdigit() or password.isalpha(): # precisa conter letras e numeros
+        elif password.isdigit() or password.isalpha():
             return {
                 "Message":"Your password need to have numbers and letters",
-                "pass":False
+                "Success":False
             }
         
-        else:
-            return {
-                "Message":"Verified successfully",
-                "pass":True
-            }
+        return {
+            "Message":"Password verified successfully",
+            "Success":True
+        }
     except:
         return {
             "Message":"Internal Error",
-            "pass":False
+            "Success":False
         }
-while True:
-    print(emailVerifier(input()))
